@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuegAgs</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; text-align: center; padding: 50px; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
+        h1 { color: #2c3e50; }
+        .status { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>¡Hola comunidad de JuegAgs!</h1>
+        <p>Proximamente...</p>
+        <p id="jquery-check">Validating jQuery... <span style="color:red;">Failed</span></p>
+    </div>
+
+    <script>
+        // Validación rápida de que jQuery está operando en el sitio
+        $(document).ready(function() {
+            $("#jquery-check").html("jQuery status: <span class='status'>Ready for GraphQL</span>");
+        });
+    </script>
+</body>
+</html>
