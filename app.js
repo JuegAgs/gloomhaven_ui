@@ -29,17 +29,4 @@ $(document).ready(function() {
     $('.btn-register').click(function() {
         $(this).next('.form-registro').slideToggle(300);
     });
-
-    // Confirmación Simulada de Registro
-    $('.btn-confirm').click(function() {
-        var container = $(this).closest('.form-registro');
-        var name = container.find('.inv-name').val();
-        if(name.trim() === "") {
-            alert("Por favor ingresa tu nombre.");
-            return;
-        }
-        alert("¡Registro enviado con éxito para: " + name + "! Recuerda tener listo tu comprobante de aportación de $50.");
-        container.slideUp(300);
-        container.find('input').val('');
-    });
 });
