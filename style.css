@@ -1,9 +1,10 @@
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #e74c3c;
-    --bg-color: #f4f6f7;
+    --primary-color: #005cc8;   /* Azul oficial JuegAgs */
+    --accent-color: #004494;    /* Azul profundo para hover y estados activos */
+    --light-accent: #e6f0fa;   /* Azul suave para resaltados/fondos */
+    --bg-color: #f4f7fa;       /* Fondo gris frío claro */
     --card-bg: #ffffff;
-    --text-color: #333333;
+    --text-color: #1e293b;
 }
 
 body {
@@ -15,40 +16,43 @@ body {
     line-height: 1.6;
 }
 
-/* Banner Principal */
+/* Header enfocado únicamente en el Logotipo */
 header {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: #ffffff; /* Fondo blanco para que el logo resalte impecable */
     text-align: center;
-    padding: 40px 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 25px 20px;
+    border-bottom: 3px solid var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    letter-spacing: 1px;
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-header p {
-    margin: 10px 0 0 0;
-    opacity: 0.9;
+.site-logo {
+    max-width: 260px; /* Tamaño destacado para el logo */
+    height: auto;
+    display: block;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15));
 }
 
 /* Marquesina de Cumpleañeros */
 .birthday-ticker {
-    background-color: #f39c12;
+    background-color: var(--primary-color);
     color: white;
     padding: 10px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 0.95em;
-    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1);
 }
 
-/* Navegación */
+/* Navegación con los tonos oficiales */
 nav {
-    background-color: #34495e;
+    background-color: #003370; /* Azul oscuro corporativo para la barra */
     display: flex;
     justify-content: center;
     position: sticky;
@@ -57,17 +61,25 @@ nav {
 }
 
 nav a {
-    color: #ecf0f1;
+    color: #ffffff;
     padding: 15px 25px;
     text-decoration: none;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: all 0.25s ease;
     cursor: pointer;
+    border-bottom: 4px solid transparent;
 }
 
-nav a:hover, nav a.active {
-    background-color: var(--accent-color);
-    color: white;
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* Pestaña activa resaltada en azul vibrante */
+nav a.active {
+    background-color: var(--primary-color);
+    border-bottom: 4px solid #ffffff;
+    color: #ffffff;
 }
 
 /* Contenedor de Contenido */
@@ -145,17 +157,45 @@ h2 {
 }
 .event-item:last-child { border-bottom: none; }
 
+/* Botones con el azul oficial */
 .btn {
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 10px 18px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    transition: background 0.2s;
 }
 
-.btn:hover { background-color: #c0392b; }
+.btn:hover {
+    background-color: var(--accent-color);
+}
+
+/* Q/A Estilo Acordeón */
+.qa-item {
+    margin-bottom: 15px;
+}
+
+.qa-question {
+    background-color: var(--light-accent);
+    padding: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color);
+}
+
+.qa-answer {
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #eaedf0;
+    border-top: none;
+    display: none;
+    white-space: pre-line;
+}
 
 .form-registro {
     display: none;
@@ -172,27 +212,6 @@ h2 {
 .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
 .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
 
-/* Q/A Estilo Acordeón */
-.qa-item {
-    margin-bottom: 15px;
-}
-.qa-question {
-    background-color: #eaedf0;
-    padding: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-    color: var(--primary-color);
-}
-.qa-answer {
-    padding: 15px;
-    background: #fff;
-    border: 1px solid #eaedf0;
-    border-top: none;
-    display: none;
-    white-space: pre-line;
-}
-
 /* Footer */
 footer {
     text-align: center;
@@ -200,33 +219,4 @@ footer {
     color: #7f8c8d;
     font-size: 0.9em;
     margin-top: 50px;
-}
-
-/* Estilos del Logo y Header */
-.header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.site-logo {
-    max-width: 180px; /* Tamaño ideal para el header */
-    height: auto;
-    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2)); /* Le da realce sobre el fondo */
-}
-
-/* Ajuste responsivo para pantallas medianas/grandes */
-@media (min-width: 600px) {
-    .header-content {
-        flex-direction: row; /* Pone el logo al lado del texto en monitores */
-        text-align: left;
-    }
-    
-    .site-logo {
-        max-width: 140px;
-    }
 }
