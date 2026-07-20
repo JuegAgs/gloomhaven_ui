@@ -7,11 +7,12 @@ $(document).ready(function() {
     }
 
     // Función centralizada para mostrar el modal dinámicamente
-    window.showModal = function(title, message, isError = false) {
+    window.showModal = function(title, htmlMessage, isError = false) {
         var $modalCard = $('#confirmModal .modal-card');
         
+        // Asignación explícita del título y mensaje (usando .html() para permitir negritas)
         $('#modalTitle').text(title);
-        $('#modalMessage').text(message);
+        $('#modalMessage').html(htmlMessage);
 
         if (isError) {
             $modalCard.addClass('modal-error');
@@ -35,7 +36,7 @@ $(document).ready(function() {
         $nameInput.removeClass('input-error');
         $emailInput.removeClass('input-error');
 
-        // 1. Validar Nombre (mínimo 3 caracteres, máximo 50)
+        // 1. Validar Nombre (entre 3 y 50 caracteres)
         if (name.length < 3 || name.length > 50) {
             $nameInput.addClass('input-error');
             showModal(
@@ -57,10 +58,10 @@ $(document).ready(function() {
             return;
         }
 
-        // 3. Éxito si pasa todas las validaciones
+        // 3. Éxito si pasa todas las validaciones (Nombre resaltado y sin mención de envío de email)
         showModal(
             "¡Registro Exitoso! 🎉", 
-            "¡Muchas gracias, " + name + "! Tu registro ha sido enviado con éxito. Te enviamos la confirmación a " + email + ". Recuerda tener listo tu comprobante de aportación de $50.", 
+            "¡Muchas gracias, <strong>" + name + "</strong>! Tu registro ha sido enviado con éxito. Te enviamos la confirmación a " + email + ". Recuerda tener listo tu comprobante de aportación de $50.", 
             false
         );
         
