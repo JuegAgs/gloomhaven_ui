@@ -1,27 +1,75 @@
 $(document).ready(function() {
-    // Función centralizada para mostrar el modal
-    window.showModal = function(message) {
+    
+    // Función de ayuda para validar formato de email
+    function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Función centralizada para mostrar el modal dinámicamente
+    window.showModal = function(title, message, isError = false) {
+        var $modalCard = $('#confirmModal .modal-card');
+        
+        $('#modalTitle').text(title);
         $('#modalMessage').text(message);
+
+        if (isError) {
+            $modalCard.addClass('modal-error');
+        } else {
+            $modalCard.removeClass('modal-error');
+        }
+
         $('#confirmModal').css('display', 'flex');
     };
 
-    // Confirmación de Registro
+    // Confirmación y Validación del Formulario
     $('.btn-confirm').click(function() {
-        var container = $(this).closest('.form-registro');
-        var name = container.find('.inv-name').val();
-        
-        if (name.trim() === "") {
-            showModal("Por favor ingresa tu nombre para completar el registro.");
+        var $container = $(this).closest('.form-registro');
+        var $nameInput = $container.find('.inv-name');
+        var $emailInput = $container.find('.inv-email');
+
+        var name = $nameInput.val().trim();
+        var email = $emailInput.val().trim();
+
+        // Limpiar errores visuales previos
+        $nameInput.removeClass('input-error');
+        $emailInput.removeClass('input-error');
+
+        // 1. Validar Nombre (mínimo 3 caracteres, máximo 50)
+        if (name.length < 3 || name.length > 50) {
+            $nameInput.addClass('input-error');
+            showModal(
+                "¡Error en el registro! ⚠️", 
+                "Por favor ingresa un nombre válido (entre 3 y 50 caracteres).", 
+                true
+            );
             return;
         }
 
-        showModal("¡Muchas gracias, " + name + "! Tu registro ha sido enviado con éxito. Recuerda tener listo tu comprobante de aportación de $50 al ingresar al evento.");
+        // 2. Validar Correo Electrónico
+        if (email === "" || !isValidEmail(email) || email.length > 80) {
+            $emailInput.addClass('input-error');
+            showModal(
+                "¡Error en el correo! ⚠️", 
+                "Por favor ingresa una dirección de correo electrónico válida.", 
+                true
+            );
+            return;
+        }
+
+        // 3. Éxito si pasa todas las validaciones
+        showModal(
+            "¡Registro Exitoso! 🎉", 
+            "¡Muchas gracias, " + name + "! Tu registro ha sido enviado con éxito. Te enviamos la confirmación a " + email + ". Recuerda tener listo tu comprobante de aportación de $50.", 
+            false
+        );
         
-        container.slideUp(300);
-        container.find('input').val('');
+        // Limpiar y ocultar formulario
+        $container.slideUp(300);
+        $container.find('input').val('');
     });
 
-    // Cerrar el Modal al hacer clic en el botón o fuera de la tarjeta
+    // Cerrar el Modal
     $('#closeModal').click(function() {
         $('#confirmModal').hide();
     });
