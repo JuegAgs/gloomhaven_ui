@@ -3,226 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JuegAgs</title>
-    <!-- jQuery incorporado para interactividad estática -->
+    <title>JuegAgs - Comunidad de Juegos de Mesa en Aguascalientes</title>
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --bg-color: #f4f6f7;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-        }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        /* Banner Principal */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            margin: 10px 0 0 0;
-            opacity: 0.9;
-        }
-
-        /* Marquesina de Cumpleañeros */
-        .birthday-ticker {
-            background-color: #f39c12;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.95em;
-            box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1);
-        }
-
-        /* Navegación */
-        nav {
-            background-color: #34495e;
-            display: flex;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav a {
-            color: #ecf0f1;
-            padding: 15px 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-            cursor: pointer;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        /* Contenedor de Contenido */
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .section-panel {
-            display: none; /* Controlado por jQuery */
-        }
-
-        .section-panel.active {
-            display: block;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Componentes de Tarjetas e Interfaz */
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #bdc3c7;
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
-
-        /* Buscador de Ludoteca */
-        .search-box {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 1em;
-        }
-
-        .grid-ludoteca {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .game-card {
-            background: #fff;
-            border-left: 5px solid var(--primary-color);
-            padding: 15px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .game-meta {
-            font-size: 0.85em;
-            color: #7f8c8d;
-            margin-top: 5px;
-        }
-
-        /* Eventos y Formularios */
-        .event-item {
-            border-bottom: 1px solid #ecf0f1;
-            padding: 15px 0;
-        }
-        .event-item:last-child { border-bottom: none; }
-
-        .btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn:hover { background-color: #c0392b; }
-
-        .form-registro {
-            display: none;
-            background: #f9f9f9;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 4px;
-            border: 1px solid #e0e0e0;
-        }
-
-        .form-group {
-            margin-bottom: 10px;
-        }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
-
-        /* Q/A Estilo Acordeón */
-        .qa-item {
-            margin-bottom: 15px;
-        }
-        .qa-question {
-            background-color: #eaedf0;
-            padding: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        .qa-answer {
-            padding: 12px;
-            background: #fff;
-            border: 1px solid #eaedf0;
-            border-top: none;
-            display: none;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #7f8c8d;
-            font-size: 0.9em;
-            margin-top: 50px;
-        }
-    </style>
+    <!-- Estilos consolidados -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <!-- Banner y Notificaciones -->
     <header>
         <h1>JuegAgs</h1>
-        <p>Portal de nuestra Comunidad de Juegos de Mesa</p>
+        <p>Comunidad de Juegos de Mesa en Aguascalientes</p>
     </header>
 
     <div class="birthday-ticker">
-        🎉 Cumpleañeros de Julio: ¡Felicidades a Gandalf y los dados de la suerte que cumplan este mes! 🎂
+        🎉 Cumpleañeros del Mes: ¡Muchas felicidades a Silvia y Suzzie de la comunidad! 🎂
     </div>
 
-    <!-- Barra de Navegación Interactiva -->
+    <!-- Barra de Navegación -->
     <nav>
         <a class="nav-link active" data-target="about">Inicio / About</a>
         <a class="nav-link" data-target="ludoteca">Ludoteca</a>
@@ -230,15 +29,15 @@
         <a class="nav-link" data-target="qa">Preguntas Frecuentes</a>
     </nav>
 
-    <!-- Contenedor Principal de Secciones -->
+    <!-- Contenedor Principal -->
     <div class="container">
 
         <!-- SECCIÓN: ABOUT -->
         <div id="about" class="section-panel active">
             <div class="card">
-                <h2>Acerca de la Comunidad</h2>
-                <p>Bienvenidos a nuestro espacio dedicado a los amantes del hobby de los juegos de mesa.</p>
-                <p>Nuestra meta es crear un entorno divertido y de sana convivencia. No importa si eres un estratega veterano o estás tirando tus primeros dados, ¡aquí siempre hay una silla y un tablero esperándote!</p>
+                <h2>Acerca de JuegAgs</h2>
+                <p>Somos una comunidad de juegos de mesa en Aguascalientes donde nos reunimos para jugar, conocer gente y pasar un buen rato. No importa si nunca has jugado juegos modernos, siempre habrá alguien dispuesto a enseñarte.</p>
+                <p>Nuestra meta es crear un entorno divertido, incluyente y de sana convivencia. No importa si vienes solo o acompañado, ¡siempre encontrarás una mesa lista para ti!</p>
             </div>
         </div>
 
@@ -246,35 +45,39 @@
         <div id="ludoteca" class="section-panel">
             <div class="card">
                 <h2>Ludoteca Comunitaria</h2>
-                <p>Explora los juegos disponibles en el grupo. Puedes buscar títulos directamente para planear las partidas de la siguiente sesión.</p>
+                <p>Explora los juegos disponibles en el grupo aportados por nuestros miembros. Puedes buscar por nombre o mecánica.</p>
                 <input type="text" id="searchGame" class="search-box" placeholder="Buscar juego por nombre o mecánica...">
                 
                 <div class="grid-ludoteca" id="ludotecaContainer">
-                    <!-- Juegos simulados -->
                     <div class="game-card" data-name="king of tokyo duel" data-mechanic="dados cartas">
                         <strong>King of Tokyo Duel</strong>
-                        <div class="game-meta">Mecánicas: Selección de Dados, Cartas, Duelo de Monstruos</div>
+                        <div class="game-meta">Mecánicas: Selección de Dados, Cartas, Duelo</div>
                         <div class="game-meta"><strong>Dueño:</strong> Paco</div>
                     </div>
-                    <div class="game-card" data-name="dice throne" data-mechanic="dados combate cartas">
-                        <strong>Dice Throne</strong>
-                        <div class="game-meta">Mecánicas: Combate con Dados, Gestión de Mano</div>
-                        <div class="game-meta"><strong>Dueño:</strong> Daniel "El Negro"</div>
+                    <div class="game-card" data-name="catan" data-mechanic="comercio dados construccion">
+                        <strong>Catan</strong>
+                        <div class="game-meta">Mecánicas: Comercio, Gestión de Recursos</div>
+                        <div class="game-meta"><strong>Dueño:</strong> Silvia</div>
                     </div>
-                    <div class="game-card" data-name="radlands" data-mechanic="cartas postapocaliptico duelo">
-                        <strong>Radlands</strong>
-                        <div class="game-meta">Mecánicas: Gestión de Recursos, Duelo de Cartas Estratégico</div>
-                        <div class="game-meta"><strong>Dueño:</strong> Yannick</div>
+                    <div class="game-card" data-name="carcassonne" data-mechanic="losetas control de areas">
+                        <strong>Carcassonne</strong>
+                        <div class="game-meta">Mecánicas: Colocación de Losetas, Puntuación</div>
+                        <div class="game-meta"><strong>Dueño:</strong> Isa</div>
                     </div>
                     <div class="game-card" data-name="seti" data-mechanic="sci-fi eurogame gestion">
                         <strong>SETI</strong>
-                        <div class="game-meta">Mecánicas: Gestión de Tablero, Ciencia Ficción Espacial, Eurogame</div>
+                        <div class="game-meta">Mecánicas: Ciencia Ficción Espacial, Eurogame</div>
                         <div class="game-meta"><strong>Dueño:</strong> Paco</div>
                     </div>
                     <div class="game-card" data-name="sushi go party" data-mechanic="drafting cartas familiar">
                         <strong>Sushi Go Party!</strong>
-                        <div class="game-meta">Mecánicas: Card Drafting, Colección de Sets</div>
-                        <div class="game-meta"><strong>Dueño:</strong> Comunidad General</div>
+                        <div class="game-meta">Mecánicas: Card Drafting, Familiar</div>
+                        <div class="game-meta"><strong>Dueño:</strong> Juan</div>
+                    </div>
+                    <div class="game-card" data-name="dune imperium" data-mechanic="colocacion de trabajadores gestion">
+                        <strong>Dune: Imperium</strong>
+                        <div class="game-meta">Mecánicas: Colocación de Trabajadores, Deck-building</div>
+                        <div class="game-meta"><strong>Dueño:</strong> Victor</div>
                     </div>
                 </div>
             </div>
@@ -283,127 +86,171 @@
         <!-- SECCIÓN: EVENTOS -->
         <div id="eventos" class="section-panel">
             <div class="card">
-                <h2>Próximas Sesiones y Torneos</h2>
-                <p>Consulta los siguientes eventos agendados y asegura tu lugar sin necesidad de tener una cuenta registrada.</p>
+                <h2>Próximas Reuniones y Eventos</h2>
+                <p>Todas nuestras reuniones requieren registro previo (cupo limitado). Aportación: <strong>$50 por persona</strong>.</p>
                 
                 <div class="event-item">
-                    <h3>Torneo Especial de King of Tokyo Duel</h3>
-                    <p><strong>Fecha:</strong> Sábado Próximo - 4:00 PM<br>
-                    <strong>Cupo Máximo:</strong> 16 Jugadores (Formato Eliminación Directa)</p>
-                    <button class="btn btn-register" data-event="Torneo King of Tokyo">Registrarme al Evento</button>
+                    <h3>Reunión Semanal JuegAgs - Temática Juegos de Estrategia</h3>
+                    <p><strong>Horario:</strong> Próximo Evento - 7:00 p.m. a 11:00 p.m.<br>
+                    <strong>Aportación:</strong> $50 MXN (Se solicita comprobante en el registro)</p>
+                    <button class="btn btn-register">Registrarme al Evento</button>
                     
                     <div class="form-registro">
-                        <h4>Inscripción Expresa (Invitado)</h4>
+                        <h4>Registro a la Reunión</h4>
                         <div class="form-group">
                             <label>Nombre Completo:</label>
-                            <input type="text" class="inv-name">
+                            <input type="text" class="inv-name" placeholder="Ej. Suzzie / Divanny">
                         </div>
                         <div class="form-group">
                             <label>Correo Electrónico:</label>
                             <input type="email" class="inv-email">
                         </div>
-                        <button class="btn btn-confirm">Confirmar Registro</button>
-                    </div>
-                </div>
-
-                <div class="event-item">
-                    <h3>Noche de Euros Estructurales e Introducción a SETI</h3>
-                    <p><strong>Fecha:</strong> Viernes Próximo - 7:00 PM<br>
-                    <strong>Cupo Máximo:</strong> 8 Jugadores</p>
-                    <button class="btn btn-register" data-event="Noche de SETI">Registrarme al Evento</button>
-                    
-                    <div class="form-registro">
-                        <h4>Inscripción Expresa (Invitado)</h4>
-                        <div class="form-group">
-                            <label>Nombre Completo:</label>
-                            <input type="text" class="inv-name">
-                        </div>
-                        <div class="form-group">
-                            <label>Correo Electrónico:</label>
-                            <input type="email" class="inv-email">
-                        </div>
-                        <button class="btn btn-confirm">Confirmar Registro</button>
+                        <button class="btn btn-confirm">Confirmar y Enviar Registro</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SECCIÓN: Q/A -->
+        <!-- SECCIÓN: Q/A OFICIAL -->
         <div id="qa" class="section-panel">
             <div class="card">
-                <h2>Preguntas Frecuentes de la Comunidad</h2>
-                <p>Espacio informativo estático con los detalles logísticos del grupo administrado por el staff.</p>
+                <h2>Preguntas Frecuentes (Q&A)</h2>
+                <p>Consulta toda la información sobre la dinámica de nuestras reuniones en Aguascalientes.</p>
                 
                 <div class="qa-item">
-                    <div class="qa-question">¿Tengo que pagar alguna membresía para asistir?</div>
-                    <div class="qa-answer">No, la entrada a las sesiones regulares es completamente libre. Solo se pide cuidar los componentes de los juegos y consumir de manera local en las sedes asignadas.</div>
+                    <div class="qa-question">🎲 ¿Qué es JuegAgs?</div>
+                    <div class="qa-answer">Somos una comunidad de juegos de mesa en Aguascalientes donde nos reunimos para jugar, conocer gente y pasar un buen rato.
+
+No importa si nunca has jugado juegos modernos, siempre habrá alguien dispuesto a enseñarte.</div>
                 </div>
 
                 <div class="qa-item">
-                    <div class="qa-question">¿Puedo llevar mis propios juegos de mesa?</div>
-                    <div class="qa-answer">¡Por supuesto! La ludoteca crece gracias a las aportaciones de todos. Solo te sugerimos agregarlo o avisar en los canales previamente para coordinar mesas y explicaciones de reglas.</div>
+                    <div class="qa-question">🤔 ¿Necesito saber jugar?</div>
+                    <div class="qa-answer">¡No!
+
+Contamos con Maestros de Reglas, quienes explican los juegos antes de comenzar y resuelven dudas durante la partida.</div>
                 </div>
 
                 <div class="qa-item">
-                    <div class="qa-question">¿Cómo funcionan las inscripciones si no tengo cuenta en la web?</div>
-                    <div class="qa-answer">Respetamos tu privacidad. Solo requieres proveer tu nombre y correo en la sección de eventos para apartar el cupo.</div>
+                    <div class="qa-question">🎲 ¿Qué tipo de juegos se juegan?</div>
+                    <div class="qa-answer">En cada reunión elegimos una temática distinta.
+
+Podrás encontrar juegos familiares, de estrategia, cooperativos, de fiesta, deducción, cartas y mucho más.</div>
                 </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">👥 ¿Puedo ir solo?</div>
+                    <div class="qa-answer">¡Claro!
+
+Muchísimas personas llegaron solas por primera vez.
+
+Nos encanta integrar a los nuevos para que siempre encuentren una mesa donde jugar.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">👶 ¿Pueden asistir niños?</div>
+                    <div class="qa-answer">Sí.
+
+Todos los asistentes realizan la misma aportación.
+
+Los menores de 13 años tendrán una selección de juegos infantiles y, a partir de los 13 años, podrán integrarse libremente a las mesas del evento.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">⏰ ¿Cuánto duran las reuniones?</div>
+                    <div class="qa-answer">Generalmente de 7:00 p.m. a 11:00 p.m.
+
+Puedes llegar un poco después o retirarte antes si lo necesitas.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">💰 ¿Cuánto cuesta asistir?</div>
+                    <div class="qa-answer">La aportación es de $50 por persona, por reunión.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">💳 ¿Cómo pago?</div>
+                    <div class="qa-answer">El pago se realiza antes del evento y durante el registro se solicita el comprobante.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">📝 ¿Necesito registrarme?</div>
+                    <div class="qa-answer">Sí.
+
+Todas nuestras reuniones requieren registro previo, ya que contamos con cupo limitado y organizamos las mesas con anticipación.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">🪑 ¿Cómo funcionan las mesas?</div>
+                    <div class="qa-answer">Al llegar te asignaremos una mesa según la logística del evento.
+
+Cada mesa tiene juegos preparados y un Maestro de Reglas que los explica.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">🎲 ¿Puedo llevar mis propios juegos?</div>
+                    <div class="qa-answer">¡Sí!
+
+Puedes llevar cualquier juego.
+Normalmente se juegan después de terminar los juegos oficiales de la reunión.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">🤝 ¿Qué pasa si no conozco a nadie?</div>
+                    <div class="qa-answer">No pasa absolutamente nada.
+
+Nuestro objetivo es que conozcas personas con quienes compartir esta afición.
+
+Siempre procuramos integrar a quienes asisten por primera vez.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">💙 ¿JuegAgs es un negocio?</div>
+                    <div class="qa-answer">No.
+
+Somos una comunidad sin fines de lucro.
+
+Las aportaciones se reinvierten en mejorar la experiencia de todos.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">🎁 ¿Qué incluye la aportación?</div>
+                    <div class="qa-answer">Nos ayuda a organizar mejores reuniones con:
+🎉 Dinámicas.
+🏆 Premiaciones.
+🎂 Cumpleaños.
+🎁 Sorpresas para la comunidad.
+🛠️ Materiales.
+🎲 Nuevos juegos y actividades.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">❤️ ¿Y si en algún momento no puedo pagar?</div>
+                    <div class="qa-answer">Si alguna vez tienes una situación complicada, acércate al comité.
+
+Lo importante es que nadie deje de formar parte de la comunidad por un tema económico.</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">🙋 ¿Cómo puedo ayudar?</div>
+                    <div class="qa-answer">Hay muchas maneras:
+🎲 Prestando juegos.
+📖 Siendo Maestro de Reglas.
+🤝 Ayudando en eventos.
+📸 Tomando fotos.
+💙 Invitando nuevos jugadores.</div>
+                </div>
+
             </div>
         </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 JuegAgs. Desarrollado bajo especificación RFC 2.0.</p>
+        <p>&copy; 2026 JuegAgs - Comunidad de Juegos de Mesa en Aguascalientes.</p>
     </footer>
 
-    <!-- LÓGICA INTERACTIVA CON JQUERY -->
-    <script>
-        $(document).ready(function() {
-            // Navegación de Pestañas
-            $('.nav-link').click(function() {
-                var target = $(this).data('target');
-                
-                $('.nav-link').removeClass('active');
-                $(this).addClass('active');
-                
-                $('.section-panel').removeClass('active');
-                $('#' + target).addClass('active');
-            });
-
-            // Motor de Búsqueda de la Ludoteca
-            $('#searchGame').on('keyup', function() {
-                var value = $(this).val().toLowerCase();
-                $('#ludotecaContainer .game-card').filter(function() {
-                    var matchName = $(this).data('name').toLowerCase().indexOf(value) > -1;
-                    var matchMech = $(this).data('mechanic').toLowerCase().indexOf(value) > -1;
-                    $(this).toggle(matchName || matchMech);
-                });
-            });
-
-            // Acordeón de la sección Q/A
-            $('.qa-question').click(function() {
-                $(this).next('.qa-answer').slideToggle(300);
-            });
-
-            // Desplegar Formulario de Registro a Eventos
-            $('.btn-register').click(function() {
-                $(this).next('.form-registro').slideToggle(300);
-            });
-
-            // Confirmación Simulada de Registro
-            $('.btn-confirm').click(function() {
-                var container = $(this).closest('.form-registro');
-                var name = container.find('.inv-name').val();
-                if(name.trim() === "") {
-                    alert("Por favor ingresa tu nombre.");
-                    return;
-                }
-                alert("¡Registro simulado con éxito para: " + name + "! (Cuando el backend en Spring Boot esté listo, este formulario guardará los datos reales en Supabase).");
-                container.slideUp(300);
-                container.find('input').val('');
-            });
-        });
-    </script>
+    <!-- Lógica JavaScript externa -->
+    <script src="app.js"></script>
 </body>
 </html>
