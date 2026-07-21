@@ -108,8 +108,7 @@ $(document).ready(function() {
                 true
             );
         })
-        .always(function() {
-            // Restaurar estado del botón
+        .finally(function() {
             $btn.prop('disabled', false).text('Confirmar y Enviar Registro');
         });
     });
