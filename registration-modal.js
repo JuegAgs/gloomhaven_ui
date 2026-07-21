@@ -27,9 +27,9 @@ $(document).ready(function() {
         $('#confirmModal').css('display', 'flex');
     };
 
-    // Desplegar / Ocultar formulario al dar clic en el botón principal "Registrarse"
+    // Desplegar / Ocultar formulario al dar clic en "Registrarse"
     $('.btn-register').click(function() {
-        var $container = $(this).siblings('.form-registro');
+        var $container = $(this).closest('.event-item').find('.form-registro');
         $container.slideToggle(300);
     });
 
