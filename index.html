@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuegAgs - Comunidad de Juegos de Mesa en Aguascalientes</title>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- 1. Cargar jQuery primero -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+
+    <!-- 2. Cargar el SDK Oficial de EmailJS ANTES de nuestros scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- 3. Nuestros scripts de la aplicación -->
+    <script src="./app.js"></script>
+    <script src="./email-service.js"></script>
+    <script src="./js/email/email-service.js"></script>
+   
     <!-- Estilos consolidados -->
     <link rel="stylesheet" href="./style.css">
 
@@ -267,10 +277,5 @@ Lo importante es que nadie deje de formar parte de la comunidad por un tema econ
             <button id="closeModal" class="btn">Entendido</button>
         </div>
     </div>
-    
-    <!-- Lógica JavaScript externa -->
-    <script src="./app.js"></script>
-    <script src="./registration-modal.js"></script>
-    <script src="./js/email/email-service.js"></script>
 </body>
 </html>
