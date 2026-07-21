@@ -24,9 +24,4 @@ $(document).ready(function() {
     $('.qa-question').click(function() {
         $(this).next('.qa-answer').slideToggle(300);
     });
-
-    // Desplegar Formulario de Registro a Eventos
-    $('.btn-register').click(function() {
-        $(this).next('.form-registro').slideToggle(300);
-    });
 });
