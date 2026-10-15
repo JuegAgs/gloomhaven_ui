@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // Navegación interactiva entre Pestañas
+    // 1. Navegación interactiva entre Pestañas
     $('.nav-link').click(function() {
         var target = $(this).data('target');
         
@@ -8,7 +8,7 @@ $(document).ready(function() {
         $('.section-panel').removeClass('active');$('#' + target).addClass('active');
     });
 
-    // Motor de Búsqueda para la Ludoteca
+    // 2. Motor de Búsqueda para la Ludoteca
     $('#searchGame').on('keyup', function() {
         var value = $(this).val().toLowerCase();$('#ludotecaContainer .game-card').filter(function() {
             var matchName = $(this).data('name').toLowerCase().indexOf(value) > -1;
@@ -17,21 +17,21 @@ $(document).ready(function() {
         });
     });
 
-    // Acordeón para la sección Q/A
+    // 3. Acordeón para la sección Q/A
     $('.qa-question').click(function() {$(this).next('.qa-answer').slideToggle(300);
     });
 
-    // --- CARGADOR DINÁMICO DE CUMPLEAÑOS DESDE ARCHIVO EXTERNO ---
+    // 4. Verificador dinámico de cumpleaños desde "cumpleanos.json"
     const bannerCumple = $('.birthday-ticker');
 
     if (bannerCumple.length) {
-        // Obtenemos la fecha actual en formato MM-DD
+        // Obtener la fecha actual del dispositivo en formato MM-DD (Ej. "10-15")
         const hoy = new Date();
         const mes = String(hoy.getMonth() + 1).padStart(2, '0');
         const dia = String(hoy.getDate()).padStart(2, '0');
         const fechaActual = `${mes}-${dia}`;
 
-        // Leemos el archivo JSON por separado
+        // Leer el archivo JSON externo
         $.getJSON('./cumpleanos.json')
             .done(function(cumpleanosComunidad) {
                 if (cumpleanosComunidad[fechaActual]) {
@@ -40,12 +40,10 @@ $(document).ready(function() {
                     bannerCumple.show();
                 } else {
                     bannerCumple.html(`🎂 Hoy no tenemos cumpleañeros en la comunidad, ¡pero ven a pasar un gran rato! 🎲`);
-                    // bannerCumple.hide(); // Descomenta si prefieres ocultarlo cuando no haya cumples
                 }
             })
             .fail(function() {
                 console.log("No se pudo cargar el archivo de cumpleaños.");
-                bannerCumple.hide(); // Oculta el banner si hay algún error leyendo el archivo
             });
     }
 });
