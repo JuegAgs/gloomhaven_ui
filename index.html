@@ -98,7 +98,7 @@
             </div>
         </div>
 
-<!-- SECCIÓN: EVENTOS -->
+        <!-- SECCIÓN: EVENTOS -->
         <div id="eventos" class="section-panel">
             <div class="card">
                 <h2>Próximas Reuniones y Eventos</h2>
@@ -112,20 +112,20 @@
                     
                     <!-- Botón para desplegar formulario -->
                     <button class="btn btn-register">Registrarme al Evento</button>
-                </div> 
-
-                <!-- Formulario de Registro (Fuera del div de texto para que el script lo encuentre y controle bien) -->
-                <div class="form-registro" style="display: none;">
-                    <h4>Registro a la Reunión</h4>
-                    <div class="form-group">
-                        <label>Nombre:</label>
-                        <input type="text" class="inv-name" placeholder="Ej. Suzzie / Divanny" required>
+                    
+                    <!-- Formulario de Registro (dentro del mismo contenedor que espera el script) -->
+                    <div class="form-registro">
+                        <h4>Registro a la Reunión</h4>
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" class="inv-name" placeholder="Ej. Suzzie / Divanny" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Correo Electrónico:</label>
+                            <input type="email" class="inv-email" placeholder="ejemplo@correo.com" required>
+                        </div>
+                        <button class="btn btn-confirm">Confirmar y Enviar Registro</button>
                     </div>
-                    <div class="form-group">
-                        <label>Correo Electrónico:</label>
-                        <input type="email" class="inv-email" placeholder="ejemplo@correo.com" required>
-                    </div>
-                    <button class="btn btn-confirm">Confirmar y Enviar Registro</button>
                 </div>
             </div>     <!-- Cierra el div con la clase "card" -->
         </div>         <!-- Cierra el div con id="eventos" -->
